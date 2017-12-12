@@ -45,25 +45,38 @@
 </template>
 
 <script>
-import schools from '../../data/school.json'
-import programs from '../../data/programs.json'
 export default {
   data () {
     return {
       data: {
-        schools: schools,
-        programs: programs,
+        schools: [],
+        programs: [],
         yearSems: [{value: 1, label: '2017/2018-2'}],
         classYears: [{value: 1, label: '1'}]
       },
       school: null,
       program: null,
       yearSem: null,
-      classYears: null
+      classYear: null
     }
   },
+  mounted () {
+    this.getSchools()
+    this.getPrograms()
+  },
   methods: {
-    getSchool () {
+    getSchools () {
+      this.$http.get('https://mpibsc.github.io/MPIClassTable/data/school.json').then(response => {
+        this.data.schools = response.body
+      }, response => {})
+    },
+    getPrograms () {
+      this.$http.get('https://mpibsc.github.io/MPIClassTable/data/programs.json').then(response => {
+        this.data.programs = response.body
+      }, response => {})
+    },
+    query () {
+
     }
   }
 }
