@@ -38,6 +38,7 @@ def parseTimeTable(program, spYear):
     innerHtml = parsedHtml.body.find('table', attrs={'bordercolor': '#CCCCCC'})
     prevIndex = 1
     prevData = {}
+    totalData = []
     for course in innerHtml.findAllNext('tr')[2: -5]:
         info = course.findChildren('font')
         length = len(info)
@@ -72,10 +73,10 @@ def parseTimeTable(program, spYear):
                 'class_code': info[2].text,
                 'subject': info[3].text,
             }
-
-        f = open('docs/data/class/' + YEAR_SEM_FN + '_' + str(spYear) + '_' + program + '.json', 'w')
-        f.write(json.dumps(data))
-        f.close()
+        totalData.append(data)
+    f = open('docs/data/class/' + YEAR_SEM_FN + '_' + str(spYear) + '_' + program + '.json', 'w')
+    f.write(json.dumps(totalData))
+    f.close()
 
 def runTimeTbl():
     prog = open("docs/data/programs.json")
