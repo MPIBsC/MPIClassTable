@@ -2,6 +2,7 @@ import urllib
 import json
 import pprint
 import sys
+import os
 from BeautifulSoup import BeautifulSoup
 
 BASEURL = "https://wapps.ipm.edu.mo/siweb/time_prog.asp"
@@ -91,6 +92,17 @@ def runTimeTbl(lang):
                 f = open('docs/data/error.log', 'w+')
                 f.write("Error in reading" + pro + " " + str(i) + "\n" + str(sys.exc_info()[0]) + "\n")
                 f.close()
+
+def purifyData():
+    for filename in os.listdir('docs/data/class/'):
+        with open('docs/data/class/' + filename) as f:
+            print("\033[92mProcessing " + filename)
+            newText=f.read().replace('&nbsp;', '')
+
+        with open('docs/data/class/' + filename, "w") as f:
+            print("\033[92mWriting to " + filename)
+            f.write(newText)
 # runCat()
 # runTimeTbl('en')
-runTimeTbl('ch')
+# runTimeTbl('ch')
+purifyData()
