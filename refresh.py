@@ -80,7 +80,7 @@ def parseTimeTable(program, spYear):
 
 def runTimeTbl():
     prog = open("docs/data/programs.json")
-    for program in json.loads(prog.read())[20:]:
+    for program in json.loads(prog.read()):
         pro = program['value']
         for i in range(1, 5):
             print("\033[92mReading " + pro + " class " + str(i))
