@@ -1,6 +1,6 @@
 <template>
   <div class="query">
-    <el-form ref="form">
+    <el-form ref="form" inline>
       <!-- <el-form-item>
         <el-select v-model="school" placeholder="School">
           <el-option
@@ -12,7 +12,7 @@
         </el-select>
       </el-form-item> -->
       <el-form-item>
-        <el-select v-model="program" placeholder="Program">
+        <el-select v-model="program" placeholder="Program" filterable>
           <el-option
             v-for="item in data.programs"
             :key="item.value"
