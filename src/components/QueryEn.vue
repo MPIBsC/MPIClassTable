@@ -1,7 +1,7 @@
 <template>
   <div class="query">
     <el-form ref="form">
-      <el-form-item>
+      <!-- <el-form-item>
         <el-select v-model="school" placeholder="School">
           <el-option
             v-for="item in data.schools"
@@ -10,6 +10,8 @@
             :value="item.value">
           </el-option>
         </el-select>
+      </el-form-item> -->
+      <el-form-item>
         <el-select v-model="program" placeholder="Program">
           <el-option
             v-for="item in data.programs"
@@ -20,20 +22,11 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-select v-model="yearSem" placeholder="Year/Semester">
-          <el-option
-            v-for="item in data.yearSems"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
         <el-select v-model="classYear" placeholder="Year/Semester">
           <el-option
             v-for="item in data.classYears"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
+            :key="item"
+            :value="item">
           </el-option>
         </el-select>
       </el-form-item>
@@ -52,7 +45,7 @@ export default {
         schools: [],
         programs: [],
         yearSems: [{value: 1, label: '2017/2018-2'}],
-        classYears: [{value: 1, label: '1'}]
+        classYears: [1, 2, 3, 4]
       },
       school: null,
       program: null,
