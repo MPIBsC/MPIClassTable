@@ -57,13 +57,13 @@ def parseTimeTable(lang, program, spYear):
             data['period'] = info[6 - offset].text,
             data['time'] = info[7 - offset].text,
             data['day'] = {
-                    'sun': 'false' if info[8 - offset].text == u'&nbsp;' else 'true',
-                    'mon': 'false' if info[9 - offset].text == u'&nbsp;' else 'true',
-                    'tue': 'false' if info[10 - offset].text == u'&nbsp;' else 'true',
-                    'wed': 'false' if info[11 - offset].text == u'&nbsp;' else 'true',
-                    'thu': 'false' if info[12 - offset].text == u'&nbsp;' else 'true',
-                    'fri': 'false' if info[13 - offset].text == u'&nbsp;' else 'true',
-                    'sat': 'false' if info[14 - offset].text == u'&nbsp;' else 'true',
+                    'su': 'false' if info[8 - offset].text == u'&nbsp;' else 'true',
+                    'mo': 'false' if info[9 - offset].text == u'&nbsp;' else 'true',
+                    'tu': 'false' if info[10 - offset].text == u'&nbsp;' else 'true',
+                    'we': 'false' if info[11 - offset].text == u'&nbsp;' else 'true',
+                    'th': 'false' if info[12 - offset].text == u'&nbsp;' else 'true',
+                    'fr': 'false' if info[13 - offset].text == u'&nbsp;' else 'true',
+                    'sa': 'false' if info[14 - offset].text == u'&nbsp;' else 'true',
                 }
         else:
             data['info'] = info[5 - offset].info
@@ -103,6 +103,6 @@ def purifyData():
             print("\033[92mWriting to " + filename)
             f.write(newText)
 # runCat()
-# runTimeTbl('en')
+runTimeTbl('en')
 # runTimeTbl('ch')
 purifyData()

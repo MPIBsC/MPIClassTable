@@ -28,42 +28,42 @@
       <el-table-column prop="type" label="Type" width="58"></el-table-column>
       <el-table-column prop="class_code" label="Class Code" width="150"></el-table-column>
       <el-table-column prop="subject" label="Subject" width="180"></el-table-column>
-      <el-table-column prop="instructor" label="Instructor" width="180"></el-table-column>
-      <el-table-column prop="room" label="Room" width="180"></el-table-column>
-      <el-table-column prop="time" label="Time" width="180"></el-table-column>
+      <el-table-column prop="instructor" label="Instructor" width="150"></el-table-column>
+      <el-table-column prop="room" label="Room" width="210"></el-table-column>
+      <el-table-column prop="time" label="Time" width="150"></el-table-column>
       <el-table-column prop="period" label="Period" width="180"></el-table-column>
       <el-table-column label="Time">
-          <el-table-column label="Su" width="48">
+          <el-table-column label="Su" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.sun)"></i>
             </template>
           </el-table-column>
-          <el-table-column label="Mo" width="48">
+          <el-table-column label="Mo" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.mon)"></i>
             </template>
           </el-table-column>
-          <el-table-column label="Tu" width="48">
+          <el-table-column label="Tu" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.tue)"></i>
             </template>
           </el-table-column>
-          <el-table-column label="We" width="48">
+          <el-table-column label="We" width="36">
           <template slot-scope="scope">
             <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.wed)"></i>
           </template>
           </el-table-column>
-          <el-table-column label="Th" width="48">
+          <el-table-column label="Th" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.thu)"></i>
             </template>
           </el-table-column>
-          <el-table-column prop="day.fri" label="Fr" width="48">
+          <el-table-column prop="day.fri" label="Fr" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.fri)"></i>
             </template>
           </el-table-column>
-          <el-table-column prop="day.sat" label="Sa" width="48">
+          <el-table-column prop="day.sat" label="Sa" width="36">
             <template slot-scope="scope">
               <i class="el-icon-circle-check-outline" v-if="cond(scope.row.day.sat)"></i>
             </template>

@@ -10,7 +10,11 @@
       <router-view/>
     </el-main>
     <el-footer>
-      (c) 2017 MPIBsC, data provided by <a href="https://wapps.ipm.edu.mo/siweb/time_prog.asp">MPI - Class Timetable Enquiry</a>
+        <!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/MPIBsC/MPIClassTable/subscription" data-icon="octicon-eye" data-size="large" aria-label="Watch MPIBsC/MPIClassTable on GitHub">Watch</a>
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/MPIBsC/MPIClassTable/issues" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue MPIBsC/MPIClassTable on GitHub">Issue</a>
+      <p>(c) 2017 MPIBsC, data provided by <a href="https://wapps.ipm.edu.mo/siweb/time_prog.asp">MPI - Class Timetable Enquiry</a></p>
     </el-footer>
   </el-container>
   </div>
