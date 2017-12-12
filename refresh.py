@@ -25,13 +25,13 @@ def runCat():
     parseFile('p_escl_cod','school', parsedHtml)
     parseFile('p_curso','programs', parsedHtml)
 
-def parseTimeTable(program, spYear):
+def parseTimeTable(lang, program, spYear):
     params = urllib.urlencode(
         {'p_curso': program,
          'p_sp_year': spYear,
           'Submit2': 'Search',
           'action': 'search',
-          'la': 'en',
+          'la': lang,
           'p_year_sem': YEAR_SEM})
     html = urllib.urlopen(BASEURL, params)
     parsedHtml = BeautifulSoup(html)
@@ -74,22 +74,23 @@ def parseTimeTable(program, spYear):
                 'subject': info[3].text,
             }
         totalData.append(data)
-    f = open('docs/data/class/' + YEAR_SEM_FN + '_' + str(spYear) + '_' + program + '.json', 'w')
+    f = open('docs/data/class/' + YEAR_SEM_FN + '_' + str(spYear) + '_' + program + '_' + lang + '.json', 'w')
     f.write(json.dumps(totalData))
     f.close()
 
-def runTimeTbl():
+def runTimeTbl(lang):
     prog = open("docs/data/programs.json")
     for program in json.loads(prog.read()):
         pro = program['value']
         for i in range(1, 5):
             print("\033[92mReading " + pro + " class " + str(i))
             try:
-                parseTimeTable(pro, i)
+                parseTimeTable(lang, pro, i)
             except:
                 print("\033[91mAn error arised in reading " + pro + str(i))
                 f = open('docs/data/error.log', 'w+')
                 f.write("Error in reading" + pro + " " + str(i) + "\n" + str(sys.exc_info()[0]) + "\n")
                 f.close()
 # runCat()
-runTimeTbl()
+# runTimeTbl('en')
+runTimeTbl('ch')
