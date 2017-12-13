@@ -22,6 +22,7 @@ def createICS(PROD, classCode):
     for item in data:
         if item['class_code'][-5: ] == classCode:
             event = Event()
+            event.add('tzname', 'Asia/Macau')
             event.add('summary', item['class_code'])
             event.add('description', item['subject'])
             dp = item['period'][0]
