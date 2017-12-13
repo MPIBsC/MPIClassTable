@@ -13,6 +13,7 @@ def createICS(PROD, classCode):
     cal.add('prodid', '-//MPIBsc//mxm.dk//' + PROD)
     cal.add('version', '1.0')
     cal.add('name', PROD + classCode)
+    cal.add('tzid', 'Asia/Shanghai')
 
     fileIn = open('docs/data/class/' + PROD + '_en.json')
     data = json.loads(fileIn.read())
