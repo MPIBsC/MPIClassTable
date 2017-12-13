@@ -12,6 +12,7 @@ classCode = '12221'
 cal = Calendar()
 cal.add('prodid', '-//MPIBsc//mxm.dk//' + PROD)
 cal.add('version', '1.0')
+cal.add('name', PROD + classCode)
 
 fileIn = open('docs/data/class/' + PROD + '_en.json')
 data = json.loads(fileIn.read())
@@ -59,6 +60,6 @@ for item in data:
         event.add('rrule', {'FREQ': "WEEKLY", 'BYDAY': byday, 'UNTIL': datetime.strptime(rend, '%Y/%m/%d%H:%M')})
         cal.add_component(event)
 
-f = open('docs/calendar/' + PROD + '.ics', 'wb')
+f = open('docs/calendar/' + PROD + classCode + '.ics', 'wb')
 f.write(cal.to_ical())
 f.close()
