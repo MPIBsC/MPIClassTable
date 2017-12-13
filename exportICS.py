@@ -47,15 +47,18 @@ def createICS(PROD, classCode):
             if byday == 'su':
                 weekDay = 6
             dtstart = datetime.strptime(dtstart, '%Y/%m/%d%H:%M')
+            dtend = datetime.strptime(dtend, '%Y/%m/%d%H:%M')
             if weekDay >= dtstart.weekday():
-                dtstart += timedelta(days = weekDay - dtstart.weekday())
+                tld = timedelta(days = weekDay - dtstart.weekday())
+                dtstart += tld
+                dtend += tld
 
             print(item['class_code'] + ' ' + str(dtstart) + ' ' + byday)
 
             event.add('uid', item['class_code'] + byday + dp + tp + '@ipm.edu.mo')
             event.add('dtstamp', datetime.now())
             event.add('dtstart', dtstart)
-            event.add('dtend', datetime.strptime(dtend, '%Y/%m/%d%H:%M'))
+            event.add('dtend', dtend)
             event.add('location', item['room'][0])
             event.add('rrule', {'FREQ': "WEEKLY", 'BYDAY': byday, 'UNTIL': datetime.strptime(rend, '%Y/%m/%d%H:%M')})
             cal.add_component(event)
