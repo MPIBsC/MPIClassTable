@@ -26,7 +26,8 @@
     </el-form>
     <el-table :data="cls" style="width: 100%">
       <el-table-column prop="type" label="Type" width="58"></el-table-column>
-      <el-table-column prop="class_code" label="Class Code" width="150"></el-table-column>
+      <el-table-column prop="class_code" label="Class Code" width="150">
+      </el-table-column>
       <el-table-column prop="subject" label="Subject" width="180"></el-table-column>
       <el-table-column prop="instructor" label="Instructor" width="180"></el-table-column>
       <el-table-column prop="room" label="Room" width="180"></el-table-column>

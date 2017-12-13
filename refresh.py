@@ -66,7 +66,7 @@ def parseTimeTable(lang, program, spYear):
                     'sa': 'false' if info[14 - offset].text == u'&nbsp;' else 'true',
                 }
         else:
-            data['info'] = info[5 - offset].info
+            data['info'] = info[5 - offset].text
         if length == 15:
             prevData = {
                 'year': info[0].text,
