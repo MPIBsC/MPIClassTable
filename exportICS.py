@@ -71,3 +71,4 @@ def createICS(PROD, classCode):
     f.close()
 
 createICS(getProdCode('2017_2018-2', '4LCDI', '1'), '12221')
+createICS(getProdCode('2017_2018-2', '4LCDI', '1'), '12121')
