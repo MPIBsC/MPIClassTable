@@ -59,6 +59,6 @@ for item in data:
         event.add('rrule', {'FREQ': "WEEKLY", 'BYDAY': byday, 'UNTIL': datetime.strptime(rend, '%Y/%m/%d%H:%M')})
         cal.add_component(event)
 
-f = open(PROD + '.ics', 'wb')
+f = open('docs/calendar/' + PROD + '.ics', 'wb')
 f.write(cal.to_ical())
 f.close()
