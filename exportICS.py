@@ -13,7 +13,7 @@ cal = Calendar()
 cal.add('prodid', '-//MPIBsc//mxm.dk//' + PROD)
 cal.add('version', '1.0')
 
-fileIn = open('docs/data/class/2017_2018-2_1_4LCDI_en.json')
+fileIn = open('docs/data/class/' + PROD + '_en.json')
 data = json.loads(fileIn.read())
 
 for item in data:
@@ -46,7 +46,7 @@ for item in data:
         if byday == 'su':
             weekDay = 6
         dtstart = datetime.strptime(dtstart, '%Y/%m/%d%H:%M')
-        if dtstart.weekday() <= weekDay:
+        if weekDay >= dtstart.weekday():
             dtstart += timedelta(days = weekDay - dtstart.weekday())
 
         print(item['class_code'] + ' ' + str(dtstart) + ' ' + byday)
