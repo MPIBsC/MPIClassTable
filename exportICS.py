@@ -10,10 +10,11 @@ classCode = '12221'
 
 def createICS(PROD, classCode):
     cal = Calendar()
-    cal.add('prodid', '-//MPIBsc//mxm.dk//' + PROD)
+    cal.add('prodid', '-//MPIBsC//' + PROD + '//EN')
     cal.add('version', '1.0')
     cal.add('name', PROD + classCode)
-    cal.add('tzid', 'Asia/Shanghai')
+    cal.add('X-WR-CALNAME', PROD + ' ' + classCode)
+    cal.add('X-WR-TIMEZONE', 'Asia/Macau')
 
     fileIn = open('docs/data/class/' + PROD + '_en.json')
     data = json.loads(fileIn.read())
