@@ -6,7 +6,6 @@ import json
 
 def getProdCode(SEM, PROG, YEAR):
     return SEM + '_' + YEAR + '_' + PROG
-classCode = '12221'
 
 def createICS(PROD, classCode):
     cal = Calendar()
@@ -70,5 +69,5 @@ def createICS(PROD, classCode):
     f.write(cal.to_ical())
     f.close()
 
-createICS(getProdCode('2017_2018-2', '4LCDI', '1'), '12221')
-createICS(getProdCode('2017_2018-2', '4LCDI', '1'), '12121')
+createICS(getProdCode('2018_2019-1', '4LCDI', '1'), '21121')
+createICS(getProdCode('2018_2019-1', '4LCDI', '1'), '21221')

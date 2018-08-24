@@ -1,3 +1,5 @@
+import requests
+import subprocess
 import urllib
 import json
 import pprint
@@ -6,12 +8,12 @@ import os
 from BeautifulSoup import BeautifulSoup
 
 BASEURL = "https://wapps.ipm.edu.mo/siweb/time_prog.asp"
-YEAR_SEM = "2017/2018-2"
-YEAR_SEM_FN = "2017_2018-2"
+YEAR_SEM = "2018/2019-1"
+YEAR_SEM_FN = "2018_2019-1"
 
 def parseFile(attr, fileName, html):
     data = []
-    innerHtml = parsedHtml.body.find('select', attrs={'name': attr})
+    innerHtml = html.body.find('select', attrs={'name': attr})
     for item in innerHtml.findChildren():
         for key, value in item.attrs:
             if value and value != "selected" :
@@ -21,7 +23,8 @@ def parseFile(attr, fileName, html):
     f.close()
 
 def runCat():
-    html = urllib.urlopen(BASEURL).read()
+    cmd = 'curl ' + BASEURL + ' --tlsv1.0'
+    html = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
     parsedHtml = BeautifulSoup(html)
     parseFile('p_escl_cod','school', parsedHtml)
     parseFile('p_curso','programs', parsedHtml)
@@ -34,7 +37,10 @@ def parseTimeTable(lang, program, spYear):
           'action': 'search',
           'la': lang,
           'p_year_sem': YEAR_SEM})
-    html = urllib.urlopen(BASEURL, params)
+    print(params)
+
+    cmd = 'curl -d "' + params + '" ' + BASEURL + ' --tlsv1.0'
+    html = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).stdout.read()
     parsedHtml = BeautifulSoup(html)
     innerHtml = parsedHtml.body.find('table', attrs={'bordercolor': '#CCCCCC'})
     prevIndex = 1
@@ -102,7 +108,7 @@ def purifyData():
         with open('docs/data/class/' + filename, "w") as f:
             print("\033[92mWriting to " + filename)
             f.write(newText)
-# runCat()
+#runCat()
 runTimeTbl('en')
 # runTimeTbl('ch')
 purifyData()
