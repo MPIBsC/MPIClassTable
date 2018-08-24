@@ -3,24 +3,20 @@ from datetime import datetime
 from datetime import timedelta
 from pytz import UTC
 import json
-import os
 
-BASE_PATH = 'docs/data/class/'
-def createICS():
-    for filename in os.listdir(BASE_PATH):
-        print('[PROCESSING] ' + filename)
-        file = open(BASE_PATH + filename);
-        data = json.loads(file.read())
-        process_data(data, filename, classCode)
-        # TODO put classes with same class code together
+def getProdCode(SEM, PROG, YEAR):
+    return SEM + '_' + YEAR + '_' + PROG
 
-def process_data(data, name, classCode):
+def createICS(PROD, classCode):
     cal = Calendar()
-    cal.add('prodid', '-//MPIBsC//' + name + '//EN')
+    cal.add('prodid', '-//MPIBsC//' + PROD + '//EN')
     cal.add('version', '1.0')
-    cal.add('name', name)
-    cal.add('X-WR-CALNAME', name)
+    cal.add('name', PROD + classCode)
+    cal.add('X-WR-CALNAME', PROD + ' ' + classCode)
     cal.add('X-WR-TIMEZONE', 'Asia/Macau')
+
+    fileIn = open('docs/data/class/' + PROD + '_en.json')
+    data = json.loads(fileIn.read())
 
     for item in data:
         if item['class_code'][-5: ] == classCode:
@@ -73,4 +69,5 @@ def process_data(data, name, classCode):
     f.write(cal.to_ical())
     f.close()
 
-createICS()
+createICS(getProdCode('2018_2019-1', '4LCDI', '2'), '21121')
+createICS(getProdCode('2018_2019-1', '4LCDI', '2'), '21221')
