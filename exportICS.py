@@ -6,7 +6,7 @@ import json
 import os
 
 BASE_PATH = 'docs/data/class/'
-PROD = "2018_2019-1_2_4LCDI"
+PROD = "2018_2019-2_2_4LCDI"
 classCode = "21221"
 def createICS():
     for filename in os.listdir(BASE_PATH):

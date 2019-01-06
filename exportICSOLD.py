@@ -69,5 +69,5 @@ def createICS(PROD, classCode):
     f.write(cal.to_ical())
     f.close()
 
-createICS(getProdCode('2018_2019-2', '4LCDI', '2'), '21121')
-createICS(getProdCode('2018_2019-2', '4LCDI', '2'), '21221')
+createICS(getProdCode('2018_2019-2', '4LCDI', '2'), '22121')
+createICS(getProdCode('2018_2019-2', '4LCDI', '2'), '22221')
