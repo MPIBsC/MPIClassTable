@@ -8,8 +8,8 @@ import os
 from BeautifulSoup import BeautifulSoup
 
 BASEURL = "https://wapps.ipm.edu.mo/siweb/time_prog.asp"
-YEAR_SEM = "2018/2019-1"
-YEAR_SEM_FN = "2018_2019-1"
+YEAR_SEM = "2018/2019-2"
+YEAR_SEM_FN = "2018_2019-2"
 
 def parseFile(attr, fileName, html):
     data = []
